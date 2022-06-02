@@ -54,10 +54,9 @@ router.get('/movies', function (req, res) {
 });
 
 router.get('/movies/:indexNumber', function(req, res){
-    let indexMovies = ['The Shawshank Redemption','The Godfather','The Dark Knight','The Godfather: Part II','12 Angry Men']
-    
-
-    res.send()
+    let indexNumber = ['The Shawshank Redemption','The Godfather','The Dark Knight','The Godfather: Part II','12 Angry Men']
+          const t = req.params.indexNumber
+    res.send(t)
 });
 
 // router.get('/candidates', function(req, res){

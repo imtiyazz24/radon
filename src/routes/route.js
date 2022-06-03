@@ -102,14 +102,13 @@ router.get('/films/:filmId', function (req ,res){
         'id': 4,
         'name': 'Finding Nemo'
         }]
-    if(req.params.filmId < filmName){
-        res.send(filmName[req.params.filmId])
-    }else {
-        res.send('No movie exists with this id')
-    }
-
-    res.send()
-})
+        const filmsname = req.params.filmId 
+        const found = filmName.find(element => element.id == filmsname)
+             if (found === undefined){
+             res.send('No movie exists with this id')
+             }
+        res.send(found)
+});
 
 router.get('/candidates', function(req, res){
     console.log('Query paramters for this request are '+JSON.stringify(req.query))

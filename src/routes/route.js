@@ -5,14 +5,14 @@ const _ = require('lodash');
 
 const router = express.Router();
 
-// router.get('/test-me', function (req, res) {
-//     myHelper.printDate()
-//     myHelper.getCurrentMonth()
-//     myHelper.getCohortData()
-//     let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
-//     console.log('The first element received from underscope function is '+firstElement)
-//     res.send('My first ever api!')
-// });
+router.get('/test-me', function (req, res) {
+    myHelper.printDate()
+    myHelper.getCurrentMonth()
+    myHelper.getCohortData()
+    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
+    console.log('The first element received from underscope function is '+firstElement)
+    res.send('My first ever api!')
+});
 
 router.get('/hello', function (req, res) {
     //===============================================1=================================================
@@ -46,36 +46,88 @@ router.get('/hello', function (req, res) {
 
     res.send('Chunk,tail,union,formPairs fucntion Check!')
 });
+//================================================ 1 ====================================================
 
 router.get('/movies', function (req, res) {
       let movies = ['The Shawshank Redemption','The Godfather','The Dark Knight','The Godfather: Part II','12 Angry Men']
     
      res.send(movies)
 });
+//=====================================================2 or 3===============================================
 
 router.get('/movies/:indexNumber', function(req, res){
-    let indexNumber = ['The Shawshank Redemption','The Godfather','The Dark Knight','The Godfather: Part II','12 Angry Men']
-          const t = req.params.indexNumber
-    res.send(t)
+    const moviesName = ['The Shawshank Redemption','The Godfather','The Dark Knight','The Godfather: Part II','12 Angry Men']
+          if (req.params.indexNumber < moviesName.length){
+              res.send(moviesName[req.params.indexNumber])
+          }else {
+              res.send("Enter valid index number")
+          }
+    res.send()
 });
 
-// router.get('/candidates', function(req, res){
-//     console.log('Query paramters for this request are '+JSON.stringify(req.query))
-//     let gender = req.query.gender
-//     let state = req.query.state
-//     let district = req.query.district
-//     console.log('State is '+state)
-//     console.log('Gender is '+gender)
-//     console.log('District is '+district)
-//     let candidates = ['Akash','Suman']
-//     res.send(candidates)
-// })
+//======================================================== 4 ==================================================
 
-// router.get('/candidates/:canidatesName', function(req, res){
-//     console.log('The request objects is '+ JSON.stringify(req.params))
-//     console.log('Candidates name is '+req.params.canidatesName)
-//     res.send('Done')
-// })
+router.get('/films', function(req, res){
+    const filmName=[ {
+        'id': 1,
+        'name': 'The Shining'
+        }, {
+        'id': 2,
+        'name': 'Incendies'
+        }, {
+        'id': 3,
+        'name': 'Rang de Basanti'
+        }, {
+        'id': 4,
+        'name': 'Finding Nemo'
+        }]
+        
+        res.send(filmName)
+
+});
+
+//=============================================== 5 =================================================
+
+router.get('/films/:filmId', function (req ,res){
+    const filmName=[ {
+        'id': 1,
+        'name': 'The Shining'
+        }, {
+        'id': 2,
+        'name': 'Incendies'
+        }, {
+        'id': 3,
+        'name': 'Rang de Basanti'
+        }, {
+        'id': 4,
+        'name': 'Finding Nemo'
+        }]
+    if(req.params.filmId < filmName){
+        res.send(filmName[req.params.filmId])
+    }else {
+        res.send('No movie exists with this id')
+    }
+
+    res.send()
+})
+
+router.get('/candidates', function(req, res){
+    console.log('Query paramters for this request are '+JSON.stringify(req.query))
+    let gender = req.query.gender
+    let state = req.query.state
+    let district = req.query.district
+    console.log('State is '+state)
+    console.log('Gender is '+gender)
+    console.log('District is '+district)
+    let candidates = ['Akash','Suman']
+    res.send(candidates)
+})
+
+router.get('/candidates/:canidatesName', function(req, res){
+    console.log('The request objects is '+ JSON.stringify(req.params))
+    console.log('Candidates name is '+req.params.canidatesName)
+    res.send('Done')
+})
 
 
 module.exports = router;

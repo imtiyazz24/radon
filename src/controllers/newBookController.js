@@ -41,7 +41,7 @@ const getBook = async function (req,res){
 
 }
 const getAge = async function (req,res){
-    const data = await authorModel.findOne( $and [{age:{$gt:50}},{rating:{$gt:4}}])
+    const data = await authorModel.findOne ({$and: [{age:{$gt:50}},{rating:{$gt:4}}]})
     res.send({msg:data})
 }
 

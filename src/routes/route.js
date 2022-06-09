@@ -47,7 +47,7 @@ router.post('/createText',newBookController.createText)
 router.post('/getbookbychetanbhagat',newBookController.getbookbychetanbhagat)
 router.post('/bookUpdate',newBookController.bookUpdate)
 router.get('/cost',newBookController.cost)
-router.get('/getBook',newBookController.getBook)
+router.get('/getBook/:Author_id',newBookController.getBook)
 router.get('/getAge',newBookController.getAge)
 
 

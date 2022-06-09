@@ -28,9 +28,7 @@ const cost = async function (req,res){
     let data = await bookModel.find( {price: {$in: [50,100] } }).select({author_id:1,_id:0})
     for(let i=0;i<data.length;i++){
         let save = await authorModel.find({author_id:data[i].author_id}).select({author_name:1})
-        res.send({msg:save})
     }
-    
     res.send()
 }
 

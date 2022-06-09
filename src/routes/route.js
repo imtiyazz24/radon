@@ -44,7 +44,11 @@ const newBookController = require('../controllers/newBookController')
 
 router.post('/createauthor',newBookController.createAuthor)
 router.post('/createText',newBookController.createText)
-router.post('/getbookbych',newBookController.getbookbych)
+router.post('/getbookbychetanbhagat',newBookController.getbookbychetanbhagat)
+router.post('/bookUpdate',newBookController.bookUpdate)
+router.get('/cost',newBookController.cost)
+router.get('/getBook',newBookController.getBook)
+router.get('/getAge',newBookController.getAge)
 
 
 

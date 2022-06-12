@@ -58,13 +58,14 @@ after 30 mins..you try to access your profile page..ideally FB should ask you to
 
 <!-- WITH JWT -->
 you punch your userName and password ..FB will craete a unique secret token( unique to every user) and send it to the browser..Chrome will save this token in its storage
+
 next time I want to acess my friendList..chrome(frontend) will send this token ( already stored in chrome storage) to the API..this API will first call a Middleware which will verify if the token is correct and who does it belong to..if token is correct then we will send the friend list of the concerned person..else send not authorised
 
 next time when you request your profile page..token is checked ..if correct you get your profile page, else "not authorised"
 
 intro
 
-<!-- ASSIGNMENT:- -->
+<!-- ASSIGNMENT:------->
 Write a middleware that logs (console.log) some data everytime any API is hit
 Data to be logged:-the current timestamp(as date time) , the IP of the user and the route being requested).
 For this first figure out how to get the route location being requested, how to get current timestamp and how to get the IP.

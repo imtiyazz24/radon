@@ -1,61 +1,28 @@
 const express = require('express');
 const router = express.Router();
-// const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
-const BookController= require("../controllers/bookController")
-const commonMW = require ("../middlewares/commonMiddlewares")
+const userController = require('../controllers/userController')
+const productDetailsController = require('../controllers/productDetailsController')
+const orderDetailsController = require('../controllers/orderDetailsController')
+// const middelware = require('../middelware/middel')
+const newjwtController = require('../controllers/newjwtController')
+const middel1 = require('../middelware/auth')
+
+
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
 })
 
+// router.post("/createUser",middelware.mid1,userController.createUser)
+// router.post("/createProduct",productDetailsController.createProduct)
+// router.post("/OrderDetails",middelware.mid1,orderDetailsController.OrderDetails)
 
 
-
-router.post("/createBook", BookController.createBook  )
-
-
-
-
-router.post("/createUser", UserController.createUser)
-// router.get("/getUsersData", UserController.getUsersData)
-
-
-// const mid1= function ( req, res, next) {
-//     console.log("Hi I am a middleware named Mid1")
-//     // logic
-//     let loggedIn = false
-
-//     if (loggedIn== true) { 
-//         console.log( "OK LOGGED IS IS TRUE NOW")
-//         next ()
-//     }
-//     else {
-//         res.send ("Please login or register")
-//     }
-// }
-
-// // e.g. restricted and open-to-all API's can be handled like below now:
-// router.get('/homePage', mid1, UserController.feeds)
-// router.get('/profileDetails', mid1, UserController.profileDetails)
-// router.get('/friendList', mid1, UserController.friendList)
-// router.get('/changePassword', mid1, UserController.changePassword)
-
-// router.get('/termsAndConditions',  UserController.termsAndConditions)
-// router.get('/register',  UserController.register)
-
-
-
-
-
-router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
-
-
-
-// router.get("/basicRoute2", commonMW.mid1, UserController.basicCode2)
-// router.get("/basicRoute3", commonMW.mid2, UserController.basicCode3)
-// router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
-
+router.post('/createUserOne',newjwtController.createUser)
+router.post('/loginUserOne',newjwtController.loginUser)
+router.get('/getloginOne/:userId',middel1.test,newjwtController.getLogin)
+router.put('/updatelogin/:userId',middel1.test,newjwtController.updatelogin)
+router.delete('/deleteLogin/:userId',middel1.test,newjwtController.deleteLogin)
 
 
 
